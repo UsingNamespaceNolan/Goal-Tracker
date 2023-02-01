@@ -1,0 +1,11 @@
+<div class="goals-section">
+    <input id="goal-name"  placeholder="Name">
+    <input id="goal-descr"  placeholder="Description">
+    <button class="add-goal">Add Goal</button>
+    <div *ngIf="goals$ | async as goals">
+        <li *ngFor="let goal of goals">
+            {{goal.name}}
+            {{goal.description}}
+        </li>
+    </div>
+</div>

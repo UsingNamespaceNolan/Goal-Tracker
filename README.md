@@ -1,5 +1,5 @@
 # Goal-Tracker
-This is a web application developed using Angular framework for the frontend and a NestJS framework for the server side. To run the code in this repo, 
+This is a web application developed using Angular framework for the frontend and a NestJS framework for the backend. To run the code in this repo, 
 you need the NestJS CLI, the Angular CLI, and npm.
 
 ## Running the app

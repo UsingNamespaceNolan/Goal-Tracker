@@ -3,7 +3,7 @@ This is a web application developed using Angular framework for the frontend and
 you need the NestJS CLI, the Angular CLI, and npm.
 
 ## Running the app
-First download node packages with
+First download node dependencies with
 ```sh
 frontend % npm install
 backend % npm install

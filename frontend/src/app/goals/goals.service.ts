@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Goal } from './goal'
+import { Observable } from 'rxjs';
 import { catchError, retry, map } from 'rxjs/operators';
 
 @Injectable({
@@ -10,11 +11,18 @@ export class GoalsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  api_server = "http://localhost:3000/goals";
+  api_url = "http://localhost:3000/goals";
 
-  getGoals(){
-    const allGoals = this.httpClient.get<Goal>(this.api_server);
+  async getGoals(){
+    const allGoals = this.httpClient.get<Goal>(this.api_url);
     allGoals.subscribe()
     return allGoals;
+  }
+  
+  addGoal(goal: Goal): Observable<any>{
+    const newGoal = this.httpClient.post<Goal>(this.api_url + '/create', goal);
+    console.log(goal)
+    newGoal.subscribe()
+    return newGoal;
   }
 }

@@ -10,7 +10,7 @@ exports.AppService = void 0;
 const common_1 = require("@nestjs/common");
 let AppService = class AppService {
     constructor() {
-        this.tester = [{ message: 'Bonjour la mond' }];
+        this.tester = [{ message: 'Hello World' }];
     }
     getHello() {
         return this.tester[0];

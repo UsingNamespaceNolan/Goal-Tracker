@@ -1,6 +1,12 @@
-import { Goal } from './goal';
+import { MainGoalTable } from 'src/entities/mainList.entity';
+import { Connection } from 'typeorm';
 export declare class GoalsService {
-    goals: Array<Goal>;
-    goal: Goal;
-    getGoals(): Goal[];
+    private connection;
+    constructor(connection: Connection);
+    getGoals(): Promise<MainGoalTable[]>;
+    getGoal(goalId: number): Promise<MainGoalTable>;
+    create_goal(body: any): Promise<{
+        name: any;
+        description: any;
+    } & MainGoalTable>;
 }

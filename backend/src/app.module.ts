@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GoalsModule } from './goals/goals.module';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { GoalsModule } from './goals/goals.module';
       synchronize: true,
     }),
     GoalsModule,
+    HttpModule,
   ],
   controllers: [AppController],
   providers: [AppService],

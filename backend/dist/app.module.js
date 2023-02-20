@@ -12,6 +12,7 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const typeorm_1 = require("@nestjs/typeorm");
 const goals_module_1 = require("./goals/goals.module");
+const axios_1 = require("@nestjs/axios");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -24,6 +25,7 @@ AppModule = __decorate([
                 synchronize: true,
             }),
             goals_module_1.GoalsModule,
+            axios_1.HttpModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

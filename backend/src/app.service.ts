@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  private tester: any = [{ message: 'Bonjour la mond' }];
+  private tester: any = [{ message: 'Hello World' }];
   getHello(): any {
     return this.tester[0];
   }

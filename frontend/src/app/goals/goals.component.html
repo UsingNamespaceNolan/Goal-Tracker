@@ -1,11 +1,10 @@
 <div class="goals-section">
     <input ngModel #name  placeholder="Name">
     <input ngModel #description placeholder="Description">
-    <button class="add-goal" (click)="addGoal()">Add Goal</button>
+    <button class="addGoal" (click)="addGoal()">Add Goal</button>
     <div *ngIf="goals$ | async as goals">
         <li *ngFor="let goal of goals">
-            {{goal.name}}
-            {{goal.description}}
+            <a routerLink="['/goals', 'goal.name']">{{goal.name}}</a>
         </li>
     </div>
 </div>

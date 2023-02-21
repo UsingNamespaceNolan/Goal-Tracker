@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-goal',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./goal.component.css']
 })
 export class GoalComponent {
-
+  constructor (private route: ActivatedRoute){}
+  ngOnInit(){
+    
+  }
 }

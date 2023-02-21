@@ -6,8 +6,16 @@ import { GoalsModule } from './goals/goals.module';
 import { LoggingComponent } from './logging/logging.component';
 import { RouterModule, Routes } from '@angular/router';
 import { GoalComponent } from './goal/goal.component';
+import { GoalsComponent } from './goals/goals.component';
 
-const routes: Routes = [{ path: 'goal', component: GoalComponent }];
+const routes: Routes = [
+  {
+    path: 'goals',
+    component: GoalsComponent,
+    children: [
+      { path: ':name', component: GoalComponent}
+    ]
+  }];
 
 @NgModule({
   declarations: [

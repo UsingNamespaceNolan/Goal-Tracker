@@ -1,10 +1,29 @@
 <div class="goals-section">
     <input ngModel #name  placeholder="Name">
     <input ngModel #description placeholder="Description">
-    <button class="addGoal" (click)="addGoal()">Add Goal</button>
-    <div *ngIf="goals$ | async as goals">
-        <li *ngFor="let goal of goals">
-            <a routerLink="['/goals', 'goal.name']">{{goal.name}}</a>
-        </li>
+    <button class="addGoalButton" (click)="addGoal()">Add Goal</button>
+    <div class="goal-list-container" *ngIf="goals$ | async as goals">
+        <div class="goal-header">
+            <span class="goal-list-detail">Name</span>
+            <span class="goal-list-detail">Complete By</span>
+            <span class="goal-list-detail">Complete</span>
+        </div>
+        <div class="goal-list-item" *ngFor="let goal of goals;index as index" [routerLink]="goal.name" 
+        [style.border-bottom-left-radius]="index==goals.length - 1 ?'7px':''"
+        [style.border-bottom-right-radius]="index==goals.length - 1 ?'7px':''"
+        (mouseenter)="selectedGoal=goal.id;mouseEnter(goal.id)"
+        (mouseleave)="selectedGoal=null"
+        style="flex-direction:column">
+            <div style="display:flex;justify-content: space-evenly;width:100%">
+                <span class="goal-list-detail">{{goal.name}}</span>
+                <span class="goal-list-detail">{{goal.completeBy}}</span>
+                <span class="goal-list-detail">{{goal.complete ?'check':'error'}}</span>
+            </div>
+            <div class="goal-item-description" 
+            [style.max-height]="goal.id==selectedGoal ?'24px':'0px'">
+            {{goal.description}}
+            </div>
+        </div>
     </div>
 </div>
+<!-- [style.background-color]="index%2==0 ?'slategray':''" -->

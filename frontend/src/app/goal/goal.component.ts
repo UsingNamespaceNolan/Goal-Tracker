@@ -10,6 +10,6 @@ import { switchMap } from 'rxjs';
 export class GoalComponent {
   constructor (private route: ActivatedRoute){}
   ngOnInit(){
-    
+    console.log("here");
   }
 }

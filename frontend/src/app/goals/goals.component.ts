@@ -16,10 +16,18 @@ export class GoalsComponent {
   @ViewChild('name') nameIn!: ElementRef;
   @ViewChild('description') descrIn!: ElementRef;
 
+  selectedGoal: string|null = null;
+  
+  mouseEnter(goal:string){
+    console.log("entered", goal);
+  }
+
   addGoal(){
     const newGoal: Goal = {
       name: this.nameIn.nativeElement.value,
-      description: this.descrIn.nativeElement.value
+      description: this.descrIn.nativeElement.value,
+      complete: true,
+      completeBy: new Date()
     } 
 
     this.goalsService.addGoal(newGoal);

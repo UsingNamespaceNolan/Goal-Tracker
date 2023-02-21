@@ -11,8 +11,7 @@ import { GoalsComponent } from './goals/goals.component';
 const routes: Routes = [
   {
     path: 'goals',
-    component: GoalsComponent,
-    children: [
+    children: [{ path: '', component: GoalsComponent },
       { path: ':name', component: GoalComponent}
     ]
   }];

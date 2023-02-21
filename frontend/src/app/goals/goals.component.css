@@ -1,6 +1,38 @@
 * {
     text-align: center;
 }
-.addGoal {
+.goal-list-container {
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: blanchedalmond;
+    box-shadow: 0px 8px 14px 4px;
+}
+.goal-list-item:nth-child(even) {
+    background-color: slategray;
+}
+.goal-header {
+    font-weight: bold;
+}
+.goal-list-item, .goal-header {
+    text-align: left;
+    min-height: 24px;
+    padding: 8px;
+    display: flex;
+    cursor: pointer;
+    transition: all 2s ease;
+}
+.goal-list-detail {
+    flex: 1;
+}
+.goal-list-item:hover {
+    background-color: aqua;
+    /* height: 32px; */
+}
+.addGoalButton {
     background-color: green;
+}
+.goal-item-description {
+    height:24px;
+    overflow-y:hidden;
+    transition:max-height 0.5s ease;
 }

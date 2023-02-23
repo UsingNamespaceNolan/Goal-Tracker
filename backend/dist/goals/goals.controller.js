@@ -19,41 +19,52 @@ let GoalsController = class GoalsController {
     constructor(goalService) {
         this.goalService = goalService;
     }
-    get_goals() {
-        return this.goalService.getGoals();
+    async get_goals() {
+        return await this.goalService.getGoals();
     }
-    get_goal(goalId) {
-        console.log(goalId);
-        return this.goalService.getGoal(goalId);
-    }
-    create_goal(body) {
+    async create_goal(body) {
         console.log(body);
-        const goal = this.goalService.create_goal(body);
-        return goal;
+        return await this.goalService.createGoal(body);
+    }
+    async toggle_complete(body, id) {
+        console.log("toggle", body, " ", id);
+        return await this.goalService.toggleComplete(id, body.complete);
+    }
+    async get_goal(goalId) {
+        console.log(goalId);
+        return await this.goalService.getGoal(goalId.goalId);
     }
 };
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], GoalsController.prototype, "get_goals", null);
 __decorate([
-    (0, common_1.Get)(':goalId'),
-    __param(0, (0, common_1.Param)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
-], GoalsController.prototype, "get_goal", null);
-__decorate([
-    (0, common_1.Post)('create'),
+    (0, common_1.Post)("create"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], GoalsController.prototype, "create_goal", null);
+__decorate([
+    (0, common_1.Post)("toggle-complete/:id"),
+    __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Number]),
+    __metadata("design:returntype", Promise)
+], GoalsController.prototype, "toggle_complete", null);
+__decorate([
+    (0, common_1.Get)(":goalId"),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], GoalsController.prototype, "get_goal", null);
 GoalsController = __decorate([
-    (0, common_1.Controller)('goals'),
+    (0, common_1.Controller)("goals"),
     __metadata("design:paramtypes", [goals_service_1.GoalsService])
 ], GoalsController);
 exports.GoalsController = GoalsController;

@@ -1,30 +1,35 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { GoalsService } from './goals.service';
+import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { GoalsService } from "./goals.service";
+import { GoalDTO } from "./goal";
 
-@Controller('goals')
+@Controller("goals")
 export class GoalsController {
-    constructor(private goalService: GoalsService){
+  constructor(private goalService: GoalsService) {}
 
-    }
+  @Get()
+  async get_goals() {
+    return await this.goalService.getGoals();
+  }
 
-    @Get()
-    get_goals(){
-        return this.goalService.getGoals()
-    }
+  @Post("create")
+  async create_goal(@Body() body: GoalDTO) {
+    console.log(body);
 
-    @Get(':goalId')
-    get_goal(@Param() goalId: number) {
-        console.log(goalId)
+    return await this.goalService.createGoal(body);
+  }
 
-        return this.goalService.getGoal(goalId)
-    }
+  @Post("toggle-complete/:id")
+  async toggle_complete(
+    @Body() body: { complete: boolean },
+    @Param() id: number
+  ) {
+    console.log("toggle", body, " ", id);
+    return await this.goalService.toggleComplete(id, body.complete);
+  }
 
-    @Post('create')
-    create_goal(@Body() body: any) {
-        console.log(body)
-
-        const goal = this.goalService.create_goal(body)
-
-        return goal
-    }
+  @Get(":goalId")
+  async get_goal(@Param() goalId: any) {
+    console.log(goalId);
+    return await this.goalService.getGoal(goalId.goalId);
+  }
 }

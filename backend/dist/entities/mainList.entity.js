@@ -25,6 +25,14 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], MainGoalTable.prototype, "description", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ default: false }),
+    __metadata("design:type", Boolean)
+], MainGoalTable.prototype, "complete", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Date)
+], MainGoalTable.prototype, "completeBy", void 0);
 MainGoalTable = __decorate([
     (0, typeorm_1.Entity)()
 ], MainGoalTable);

@@ -32,23 +32,40 @@ let GoalsService = class GoalsService {
     async getGoal(goalId) {
         const goal = await this.connection.transaction(async (manager) => {
             const repo = manager.getRepository(mainList_entity_1.MainGoalTable);
-            const goal = repo.findOne({ where: { id: 1 } });
+            const goal = repo.findOne({ where: { id: goalId } });
             return goal;
         });
-        console.log(goal);
+        console.log("here", goal);
         return goal;
     }
-    async create_goal(body) {
+    async toggleComplete(id, completed) {
+        return await this.connection.transaction(async (manager) => {
+            const repo = manager.getRepository(mainList_entity_1.MainGoalTable);
+            await repo.update(id, { complete: completed });
+            return completed;
+        });
+    }
+    async createGoal(body) {
         const goal = await this.connection.transaction(async (manager) => {
             const repo = manager.getRepository(mainList_entity_1.MainGoalTable);
             const goal = repo.save({
                 name: body.name,
-                description: body.description
+                description: body.description,
+                complete: body.complete,
+                completeBy: body.completeBy,
             });
             return goal;
         });
-        console.log('Creadted goal:', goal);
+        console.log("Creadted goal:", goal);
         return goal;
+    }
+    async completeGoal() {
+        const goals = await this.connection.transaction(async (manager) => {
+            const repo = manager.getRepository(mainList_entity_1.MainGoalTable);
+            const goals = repo.find();
+            return goals;
+        });
+        return goals;
     }
 };
 GoalsService = __decorate([

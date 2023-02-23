@@ -1,7 +1,7 @@
 import { Input, Component, ViewChild, ElementRef } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { GoalsService } from './goals.service';
-import { Goal } from './goal';
+import { Goal, GoalDTO } from './goal';
 
 @Component({
   selector: 'app-goals',
@@ -15,24 +15,26 @@ export class GoalsComponent {
 
   @ViewChild('name') nameIn!: ElementRef;
   @ViewChild('description') descrIn!: ElementRef;
+  @ViewChild('completeByDate') completeDateIn!: ElementRef;
 
   selectedGoal: string|null = null;
-  
-  mouseEnter(goal:string){
-    console.log("entered", goal);
+
+  toggleComplete(goal: Goal){
+    this.goalsService.toggleComplete(goal.id, !goal.complete)
+
   }
 
   addGoal(){
-    const newGoal: Goal = {
+    const newGoal: GoalDTO = {
       name: this.nameIn.nativeElement.value,
       description: this.descrIn.nativeElement.value,
-      complete: true,
-      completeBy: new Date()
+      complete: false,
+      completeBy: this.completeDateIn.nativeElement.value
     } 
 
     this.goalsService.addGoal(newGoal);
 
-    this.refreshGoals()
+    setTimeout(()=>this.refreshGoals(), 500)
 
   }
 

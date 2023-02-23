@@ -16,7 +16,7 @@
 .goal-list-item, .goal-header {
     text-align: left;
     min-height: 24px;
-    padding: 8px;
+    padding: 12px;
     display: flex;
     cursor: pointer;
     transition: all 2s ease;

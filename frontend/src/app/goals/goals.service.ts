@@ -15,17 +15,20 @@ export class GoalsService {
   async getGoals() {
     const allGoals = this.httpClient.get<Goal>(this.api_url);
     allGoals.subscribe();
-    return await allGoals;
+    return allGoals;
   }
 
   async getGoal(id: number) {
-    return await this.httpClient.get<Goal>(this.api_url + "/" + id);
+    let stringId: unknown = id;
+    const goal = this.httpClient.get<Goal>(this.api_url + "/" + id);
+    goal.subscribe();
+    return goal;
   }
 
   async addGoal(goal: GoalDTO) {
     const newGoal = this.httpClient.post<Goal>(this.api_url + "/create", goal);
     newGoal.subscribe();
-    return await newGoal;
+    return newGoal;
   }
 
   async toggleComplete(id:number, complete:boolean){

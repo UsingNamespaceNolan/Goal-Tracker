@@ -21,7 +21,6 @@ export class GoalsComponent {
 
   toggleComplete(goal: Goal){
     this.goalsService.toggleComplete(goal.id, !goal.complete)
-
   }
 
   addGoal(){

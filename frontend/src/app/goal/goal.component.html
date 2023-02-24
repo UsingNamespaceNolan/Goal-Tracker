@@ -1,3 +1,10 @@
 <p>goal works!</p>
 
-<p *ngIf="goal$|async as goal">{{goal.id}}</p>
+<div *ngIf="goal$ | async as goal">
+  <h1>{{ goal.name }}</h1>
+  <h2 *ngIf="goal.complete">{{ goal.complete }}</h2>
+  <header class="description">Description</header>
+  <p class="description-text">{{ goal.description }}</p>
+  <header class="complete-by">Complete By</header>
+  <p class="complete-by-text">{{ goal.completeBy }}</p>
+</div>

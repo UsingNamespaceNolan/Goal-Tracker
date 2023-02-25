@@ -1,7 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { GoalsService } from "../goals/goals.service";
 import { Observable } from "rxjs";
+import { faCheckCircle, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-goal",
@@ -10,7 +11,11 @@ import { Observable } from "rxjs";
 })
 export class GoalComponent {
   constructor(private service: GoalsService, private route: ActivatedRoute) {}
+
   goal: any | null = null;
+  goal$: Observable<any> | undefined;
+  faCheckCircle = faCheckCircle;
+  faCircleXmark = faCircleXmark;
 
   async refreshGoal() {
     const snapshot = this.route.snapshot;
@@ -20,10 +25,7 @@ export class GoalComponent {
     console.log("refresh", this.goal$);
   }
 
-  goal$: Observable<any> | undefined;
-
   ngOnInit() {
-    console.log(this.goal$);
     this.refreshGoal();
   }
 }

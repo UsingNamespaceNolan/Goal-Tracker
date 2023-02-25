@@ -1,0 +1,13 @@
+<html>
+  <a routerLink="..">Back</a>
+  <div *ngIf="goal$ | async as goal">
+    <div class="goal-content">
+      <h1>{{ goal.name }}</h1>
+
+      <header class="description">Goal Description</header>
+      <p class="description-text">{{ goal.description }}</p>
+      <header class="complete-by">Complete By</header>
+      <p class="complete-by-text">{{ goal.completeBy }}</p>
+    </div>
+  </div>
+</html>

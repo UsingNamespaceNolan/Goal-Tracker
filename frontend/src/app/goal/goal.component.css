@@ -1,0 +1,23 @@
+.block-title {
+    text-align: center;
+}
+.goal-content {
+    text-align: left;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: blanchedalmond;
+    position: relative;
+    padding: 10px 10px 10px 10px;
+
+}
+.complete-display {
+    align-items: center;
+    display:flex;
+}
+.complete-display, .check {
+    color:green;
+}
+
+.complete-display, .xMark {
+    color:red;
+}

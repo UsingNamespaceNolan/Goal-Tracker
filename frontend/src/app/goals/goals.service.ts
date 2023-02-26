@@ -31,6 +31,12 @@ export class GoalsService {
     return newGoal;
   }
 
+  async saveGoalEdit(goal: Goal){
+    const editGoal = this.httpClient.post<Goal>(this.api_url + "/save", goal);
+    editGoal.subscribe();
+    return editGoal;
+  }
+
   async toggleComplete(id:number, complete:boolean){
     const updateGoal = this.httpClient.post<Goal>(this.api_url + "/toggle-complete/" + id, {complete});
     updateGoal.subscribe()

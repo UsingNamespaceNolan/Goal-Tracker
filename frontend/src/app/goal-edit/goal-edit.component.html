@@ -2,12 +2,35 @@
   <a routerLink="..">Back</a>
   <div *ngIf="goal$ | async as goal">
     <div class="goal-content">
-      <h1>{{ goal.name }}</h1>
-
+      <h1 ngModel #goalName placeholder>{{ goal.name }}</h1>
+      <div class="complete-display" ngModel #complete placeholder>
+        {{ goal.complete }}
+        <p>Complete</p>
+        <fa-icon
+          class="check"
+          *ngIf="goal.complete"
+          [icon]="faCheckCircle"
+        ></fa-icon>
+        <fa-icon
+          class="xMark"
+          *ngIf="!goal.complete"
+          [icon]="faCircleXmark"
+        ></fa-icon>
+      </div>
       <header class="description">Goal Description</header>
-      <p class="description-text">{{ goal.description }}</p>
+      <textarea class="description-text" ngModel #newDescription placeholder>{{
+        goal.description
+      }}</textarea>
       <header class="complete-by">Complete By</header>
-      <p class="complete-by-text">{{ goal.completeBy }}</p>
+      <input
+        [value]="goal.completeBy | date : 'yyyy-MM-dd'"
+        type="date"
+        class="complete-by"
+        ngModel
+        #newCompleteDate
+        placeholder
+      />
     </div>
   </div>
+  <button class="saveEdit" (click)="saveGoalEdit()">Save Goal</button>
 </html>

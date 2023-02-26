@@ -20,9 +20,7 @@ export class GoalComponent {
   async refreshGoal() {
     const snapshot = this.route.snapshot;
     const goalId = snapshot.params["id"];
-    console.log("id", goalId);
     this.goal$ = await this.service.getGoal(goalId);
-    console.log("refresh", this.goal$);
   }
 
   ngOnInit() {

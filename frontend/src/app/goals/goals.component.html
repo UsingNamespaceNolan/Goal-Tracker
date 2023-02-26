@@ -23,7 +23,7 @@
     >
       <div style="display: flex; justify-content: space-evenly; width: 100%">
         <span class="goal-list-detail">{{ goal.name }}</span>
-        <span class="goal-list-detail">{{ goal.completeBy }}</span>
+        <span class="goal-list-detail">{{ goal.completeBy | date }}</span>
         <span class="goal-list-detail">
           <input
             [checked]="goal.complete"

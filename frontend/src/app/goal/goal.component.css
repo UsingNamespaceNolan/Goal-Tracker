@@ -14,10 +14,10 @@
     align-items: center;
     display:flex;
 }
-.complete-display, .check {
+.check {
     color:green;
 }
 
-.complete-display, .xMark {
+.xMark {
     color:red;
 }

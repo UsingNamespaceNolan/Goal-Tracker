@@ -1,25 +1,25 @@
-<html>
-  <div *ngIf="goal$ | async as goal">
-    <div class="goal-content">
+<div *ngIf="goal$ | async as goal">
+  <div class="goal-content">
+    <div style="display: flex; justify-content: space-between">
       <h1>{{ goal.name }}</h1>
       <a class="edit" [routerLink]="'edit'">Edit</a>
-      <div class="complete-display">
-        <p>Complete</p>
-        <fa-icon
-          class="check"
-          *ngIf="goal.complete"
-          [icon]="faCheckCircle"
-        ></fa-icon>
-        <fa-icon
-          class="xMark"
-          *ngIf="!goal.complete"
-          [icon]="faCircleXmark"
-        ></fa-icon>
-      </div>
-      <header class="description">Goal Description</header>
-      <p class="description-text">{{ goal.description }}</p>
-      <header class="complete-by">Complete By</header>
-      <p class="complete-by-text">{{ goal.completeBy }}</p>
     </div>
+    <div class="complete-display">
+      <p>Complete</p>
+      <fa-icon
+        class="check"
+        *ngIf="goal.complete"
+        [icon]="faCheckCircle"
+      ></fa-icon>
+      <fa-icon
+        class="xMark"
+        *ngIf="!goal.complete"
+        [icon]="faCircleXmark"
+      ></fa-icon>
+    </div>
+    <header class="description">Goal Description</header>
+    <p class="description-text">{{ goal.description }}</p>
+    <header class="complete-by">Complete By</header>
+    <p class="complete-by-text">{{ goal.completeBy }}</p>
   </div>
-</html>
+</div>
